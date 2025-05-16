@@ -21,16 +21,16 @@ Produto Estrutura_produto[produto_mac];
 int qtdClientesCadastrados = 0;
 int qtdProdutosCadastrados = 0;
 
-//menu de opções
+// Menu de opções
 void mostraOpcoes() {
     printf("MENU\n");
     printf("0 - Sair\n");
     printf("1 - Inserir cliente\n");
     printf("2 - Inserir produto\n");
-    printf("3 - Inserir venda\n");
-    printf("4 - Listar clientes\n");
-    printf("5 - Excluir cliente\n");
-    printf( "\n");
+    printf("3 - Listar clientes\n");
+    printf("4 - Excluir cliente\n");
+    printf("5 - Listar produtos\n");
+    printf("\n");
 }
 
 void insereCliente() {
@@ -39,9 +39,9 @@ void insereCliente() {
         return;
     }
     printf("Nome do cliente: ");
-        scanf("%s", estrutura_clientes_[qtdClientesCadastrados].nome);
+    scanf("%s", estrutura_clientes_[qtdClientesCadastrados].nome);
     printf("Email do cliente: ");
-        scanf("%s", estrutura_clientes_[qtdClientesCadastrados].email);
+    scanf("%s", estrutura_clientes_[qtdClientesCadastrados].email);
     qtdClientesCadastrados++;
     printf("Cliente inserido com sucesso!\n");
 }
@@ -81,25 +81,20 @@ void excluirClientes() {
 }
 
 void insereProduto() {
-// Verifica se ainda há vaga
     if (qtdProdutosCadastrados >= produto_mac) {
         printf("Limite de produtos atingido!\n");
         return;
     }
 
-//nome do produto
     printf("Nome do produto: ");
     scanf("%s", Estrutura_produto[qtdProdutosCadastrados].nome);
 
-//preço do produto
     printf("Preço do produto: R$ ");
     scanf("%f", &Estrutura_produto[qtdProdutosCadastrados].preco);
 
-//quantidade disponível
     printf("Quantidade do produto: ");
     scanf("%f", &Estrutura_produto[qtdProdutosCadastrados].quantidade);
 
- 
     qtdProdutosCadastrados++;
     printf("Produto inserido com sucesso!\n");
 }
@@ -127,12 +122,12 @@ int main(void) {
         scanf("%d", &opcao);
 
         switch (opcao) {
-            case 1: insereCliente();      break;
-            case 2: insereProduto();      break;
-            case 3: printf("Venda não implementada.\n"); break;
-            case 4: listarClientes();     break;
-            case 5: excluirClientes();    break;
             case 0: printf("Saindo...\n"); break;
+            case 1: insereCliente();       break;
+            case 2: insereProduto();       break;
+            case 3: listarClientes();      break;
+            case 4: excluirClientes();     break;
+            case 5: listarProdutos();      break;
             default: printf("Opção inválida.\n");
         }
     } while (opcao != 0);
